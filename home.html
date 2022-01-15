@@ -5,8 +5,30 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tic Tac Toe on web -Homepage</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css" rel="stylesheet" type="text/css" />
+    <script src="https://code.jquery.com/jquery-3.1.0.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 </head>
 <body>
-    
+    <h1>Tic Tac Toe on web!</h1>
+    <a href="game/game.html">
+        <button>Start a match</button>
+    </a>
+    <script>
+        $("button").hover(function() {
+            $("button").animate({
+                backgroundColor: "#000",
+                borderColor: "#fff",
+                color: "#fff"
+            }, 200);
+        }, function () {
+            $("button").animate({
+                backgroundColor: "#fff",
+                borderColor: "#000",
+                color: "#000"
+            }, 200);
+        });
+    </script>
 </body>
 </html>
