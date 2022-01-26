@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<!-- Made by Leonardo Poerio -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game - Tic Tac Toe on web</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css" rel="stylesheet" type="text/css" />
+    <script src="https://code.jquery.com/jquery-3.1.0.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+</head>
+<body>
+    <div id="gameBoard">
+        <div class="row">
+            <div class="gameCell" id="A1"></div>
+            <div class="gameCell" id="B1"></div>
+            <div class="gameCell" id="C1"></div>
+        </div>
+        <div class="row">
+            <div class="gameCell" id="A2"></div>
+            <div class="gameCell" id="B2"></div>
+            <div class="gameCell" id="C2"></div>
+        </div>
+        <div class="row">
+            <div class="gameCell" id="A3"></div>
+            <div class="gameCell" id="B3"></div>
+            <div class="gameCell" id="C3"></div>
+        </div>
+    </div>
+    <script>
+        var playerIndex = 1;
+        var counter = 0;
+        $(".gameCell").click(function() {
+            if (playerIndex == 1) {
+                $(this).addClass("x-selected");
+                $(this).addClass("selected");
+                $(".x-selected").css("background-image", "url('xplayer.svg')");
+                $(".o-selected").css("background-image", "url('oplayer.svg')");
+                counter++;
+                playerIndex = 2;
+            } else{
+                $(this).addClass("o-selected");
+                $(this).addClass("selected");
+                $(".x-selected").css("background-image", "url('xplayer.svg')");
+                $(".o-selected").css("background-image", "url('oplayer.svg')");
+                counter++;
+                playerIndex = 1;
+            }
+        });
+        
+    </script>
+</body>
+</html>
