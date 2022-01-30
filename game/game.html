@@ -29,9 +29,29 @@
             <div class="gameCell" id="C3"></div>
         </div>
     </div>
+    <div id="controlPanel">
+        <h4>Control Panel</h4>
+        <div class="buttonContainer">
+            <a href="../home.html">
+                <button id="backHome" accesskey="b" title="Back to home (Alt+c)">Back to home</button>
+            </a>
+            <button id="clearCells" accesskey="c" title="Clear cells (Alt+c)">Clear Cells</button>
+        </div>
+        <div id="console">
+            <p id="consolePrint">Starting the match...</p>
+        </div>
+    </div>
     <script>
-        var playerIndex = 1;
+        var playerIndex = Math.floor((Math.random() * 2) + 1);
+        var randomN = playerIndex;
         var counter = 0;
+        var user = "";
+        if (randomN == 1) {
+            user = "X-USER";
+        } else {
+            user = "0-USER";
+        }
+        $("#consolePrint").html($("#consolePrint").html() + "<br>" + "The first round is of the " + user);
         $(".gameCell").click(function() {
             if (playerIndex == 1) {
                 $(this).addClass("x-selected");
@@ -40,16 +60,46 @@
                 $(".o-selected").css("background-image", "url('oplayer.svg')");
                 counter++;
                 playerIndex = 2;
-            } else{
+                $("#consolePrint").html($("#consolePrint").html() + "<br>" + "X-USER clicked on " + $(this).attr("id"));
+            } else if (playerIndex == 2){
                 $(this).addClass("o-selected");
-                $(this).addClass("selected");
                 $(".x-selected").css("background-image", "url('xplayer.svg')");
                 $(".o-selected").css("background-image", "url('oplayer.svg')");
                 counter++;
                 playerIndex = 1;
+                $("#consolePrint").html($("#consolePrint").html() + "<br>" + "0-USER clicked on " + $(this).attr("id"));
             }
         });
         
+    </script>
+    <script>
+        $("#backHome").hover(function() {
+            $("#backHome").animate({
+                backgroundColor: "#fffff0"
+            }, 200);
+        }, function () {
+            $("#backHome").animate({
+                backgroundColor: "#047500"
+            }, 200);
+        });
+        $("#clearCells").hover(function() {
+            $("#clearCells").animate({
+                backgroundColor: "#fffff0"
+            }, 200);
+        }, function () {
+            $("#clearCells").animate({
+                backgroundColor: "#c40000"
+            }, 200);
+        });
+    </script>
+    <script>
+        $("#clearCells").click(function() {
+            $(".gameCell").removeClass("x-selected");
+            $(".gameCell").removeClass("o-selected");
+            $(".gameCell").removeClass("selected");
+            $(".gameCell").removeAttr("style");
+            $("#consolePrint").html("Starting the match...");
+        });
     </script>
 </body>
 </html>
