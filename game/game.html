@@ -43,7 +43,7 @@
     </div>
     <script>
         function game() {
-            var playerIndex = Math.floor((Math.random() * 2) + 0);
+            var playerIndex = Math.floor((Math.random() * 2) + 1);
             var randomN = playerIndex;
             var counter = 0;
             var user = "";
@@ -53,7 +53,7 @@
                 user = "0-USER";
             }
             $("#consolePrint").html($("#consolePrint").html() + "<br>" + "The first round is of the " + user);
-            $(".gameCell").click(function() {
+            function clickF() {
                 if (playerIndex == 1) {
                     if ($(this).attr("class") == "gameCell") {
                         $(this).addClass("x-selected");
@@ -64,7 +64,8 @@
                         $("#consolePrint").html($("#consolePrint").html() + "<br>" + "X-USER clicked on " + $(this).attr("id"));
                     }
                     //$(".o-selected").css("background-image", "url('oplayer.svg')");
-                } else if (playerIndex == 2){
+                }
+                if (playerIndex == 2){
                     if ($(this).attr("class") == "gameCell") {
                         $(this).addClass("o-selected");
                         //$(".x-selected").css("background-image", "url('xplayer.svg')");
@@ -74,7 +75,8 @@
                         $("#consolePrint").html($("#consolePrint").html() + "<br>" + "0-USER clicked on " + $(this).attr("id"));
                     }
                 }
-            });
+            }
+            $(".gameCell").click(clickF);
             if (counter == 6) {
                 $(".gameCell").click(function () {
                     
