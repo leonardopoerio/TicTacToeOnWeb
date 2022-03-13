@@ -134,3 +134,11 @@ body{
     font-family: 'Courier New', Courier, monospace;
     overflow: auto;
 }
+
+.ui-dialog-titlebar-close {
+    visibility: hidden;
+}
+
+#forous{
+    display: inline-block;
+}

@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Game - Tic Tac Toe on web</title>
     <link rel="stylesheet" href="style.css">
-    <link href="https://code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.1/themes/base/jquery-ui.css">
     <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 </head>
@@ -42,28 +42,29 @@
         </div>
     </div>
     <script>
-        function game() {
-            var playerIndex = Math.floor((Math.random() * 2) + 1);
+        var user = "";
+            var playerIndex = Math.floor((Math.random() * 2));
             var randomN = playerIndex;
-            var counter = 0;
-            var user = "";
-            if (randomN == 1) {
-                user = "X-USER";
+            if (randomN == 0) {
+                user = "0-USER"
+                $("#consolePrint").append("<br>The first turn is of " + user);
             } else {
-                user = "0-USER";
+                user = "X-USER"
+                $("#consolePrint").append("<br>The first turn is of " + user);
             }
-            $("#consolePrint").html($("#consolePrint").html() + "<br>" + "The first round is of the " + user);
-            function clickF() {
+        function game() {
+            var counter = 0;
+            $(".gameCell").click(function () {
                 if (playerIndex == 1) {
                     if ($(this).attr("class") == "gameCell") {
                         $(this).addClass("x-selected");
-                        $(this).addClass("selected");
                         $(".x-selected").css("background-image", "url('xplayer.svg')");
                         counter++;
                         playerIndex = 2;
                         $("#consolePrint").html($("#consolePrint").html() + "<br>" + "X-USER clicked on " + $(this).attr("id"));
+                        
                     }
-                    //$(".o-selected").css("background-image", "url('oplayer.svg')");
+                    
                 }
                 if (playerIndex == 2){
                     if ($(this).attr("class") == "gameCell") {
@@ -75,15 +76,16 @@
                         $("#consolePrint").html($("#consolePrint").html() + "<br>" + "0-USER clicked on " + $(this).attr("id"));
                     }
                 }
-            }
-            $(".gameCell").click(clickF);
-            if (counter == 6) {
-                $(".gameCell").click(function () {
-                    
-                })
-            }
+
+            
+                if($("#A1").attr("class") == "gameCell x-selected") {
+                    $("#endDialog").dialog();
+                }
+            
+            });
         }
         game();
+        
     </script>
     <script>
         $("#backHome").hover(function() {
@@ -107,12 +109,20 @@
     </script>
     <script>
         $("#clearCells").click(function() {
-            var playerIndex = Math.floor((Math.random() * 2) + 1);
             $(".gameCell").removeClass("x-selected");
             $(".gameCell").removeClass("o-selected");
-            $(".gameCell").removeClass("selected");
             $(".gameCell").removeAttr("style");
             $("#consolePrint").html("Starting the match...");
+            var user = "";
+            var playerIndex = Math.floor((Math.random() * 2));
+            var randomN = playerIndex;
+            if (randomN == 0) {
+                user = "0-USER"
+                $("#consolePrint").append("<br>The first turn is of " + user);
+            } else {
+                user = "X-USER"
+                $("#consolePrint").append("<br>The first turn is of " + user);
+            }
             game();
         });
     </script>
