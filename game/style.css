@@ -135,10 +135,26 @@ body{
     overflow: auto;
 }
 
-.ui-dialog-titlebar-close {
-    visibility: hidden;
+.nothing{
+    background-image: none;
 }
 
-#forous{
-    display: inline-block;
+#resulter{
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.4);
+    position: absolute;
+    bottom: 100vh;
+    z-index: 1;
+    float: left;
+}
+
+#resulterr{
+    color: red;
+    font-size: 20vh;
+    font-family: Nunito;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
