@@ -15,6 +15,13 @@
 <body>
     <div id="resulter">
         <span id="resulterr"></span>
+        <a href="../home.html" class="visitador" id="home" title="Back to homepage"><svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" fill="currentColor" class="bi bi-house-door-fill" viewBox="0 0 16 16">
+            <path d="M6.5 14.5v-3.505c0-.245.25-.495.5-.495h2c.25 0 .5.25.5.5v3.5a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.146-.354L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5z"/>
+        </svg></a>
+        <a href="game.html" class="visitador" id="restart" title="Start a new game"><svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" fill="currentColor" class="bi bi-arrow-repeat" viewBox="0 0 16 16">
+            <path d="M11.534 7h3.932a.25.25 0 0 1 .192.41l-1.966 2.36a.25.25 0 0 1-.384 0l-1.966-2.36a.25.25 0 0 1 .192-.41zm-11 2h3.932a.25.25 0 0 0 .192-.41L2.692 6.23a.25.25 0 0 0-.384 0L.342 8.59A.25.25 0 0 0 .534 9z"/>
+            <path fill-rule="evenodd" d="M8 3c-1.552 0-2.94.707-3.857 1.818a.5.5 0 1 1-.771-.636A6.002 6.002 0 0 1 13.917 7H12.9A5.002 5.002 0 0 0 8 3zM3.1 9a5.002 5.002 0 0 0 8.757 2.182.5.5 0 1 1 .771.636A6.002 6.002 0 0 1 2.083 9H3.1z"/>
+        </svg></a>
     </div>
     <div id="gameBoard">
         <div class="row">
@@ -42,7 +49,7 @@
             <button id="clearCells" accesskey="c" title="Clear cells (Alt+c)">Clear Cells</button>
         </div>
         <div id="console">
-            <p id="consolePrint">Starting the match...</p>
+            <p id="consolePrint">Starting the game...</p>
         </div>
     </div>
     <script>
@@ -59,6 +66,28 @@
             user = "X-USER"
             $("#consolePrint").append("<br>The first turn is of " + user);
         }
+
+        function nwin() {
+            $("#resulter").animate({
+                        bottom: 0
+                    }, 1000);
+                        $("#resulterr").html("Nobody won");
+        }
+
+        function xwin() {
+            $("#resulter").animate({
+                        bottom: 0
+                    }, 1000);
+                        $("#resulterr").html("X-USER won!!!");
+        }
+
+        function owin() {
+            $("#resulter").animate({
+                        bottom: 0
+                    }, 1000);
+                        $("#resulterr").html("0-USER winned!!!");
+        }
+
         function game() {
             var counter = 0;
             $(".gameCell").click(function () {
@@ -85,90 +114,40 @@
                 
                 if (counter != 0) {
                     if ($("#A" + count).attr("class") == "gameCell x-selected" && $("#B" + count).attr("class") == "gameCell x-selected" && $("#C" + count).attr("class") == "gameCell x-selected") {
-                    $("#resulter").animate({
-                        bottom: 0
-                    }, 1000);
-                        $("#resulterr").html("X-USER winned!!!");
+                        xwin();
                     } else if ($("#A" + count).attr("class") == "gameCell x-selected" && $("#A" + ccount).attr("class") == "gameCell x-selected" && $("#A" + cccount).attr("class") == "gameCell x-selected") {
-                        $("#resulter").animate({
-                        bottom: 0
-                    }, 1000);
+                        xwin();
                         $("#resulterr").html("X-USER winned!!!");
                     } else if ($("#A" + ccount).attr("class") == "gameCell x-selected" && $("#B" + ccount).attr("class") == "gameCell x-selected" && $("#C" + ccount).attr("class") == "gameCell x-selected") {
-                        $("#resulter").animate({
-                        bottom: 0
-                    }, 1000);
-                        $("#resulterr").html("X-USER winned!!!");
+                        xwin();
                     } else if ($("#B" + count).attr("class") == "gameCell x-selected" && $("#B" + ccount).attr("class") == "gameCell x-selected" && $("#B" + cccount).attr("class") == "gameCell x-selected") {
-                        $("#resulter").animate({
-                        bottom: 0
-                    }, 1000);
-                        $("#resulterr").html("X-USER winned!!!");
+                        xwin();
                     } else if ($("#A" + cccount).attr("class") == "gameCell x-selected" && $("#B" + cccount).attr("class") == "gameCell x-selected" && $("#C" + cccount).attr("class") == "gameCell x-selected") {
-                        $("#resulter").animate({
-                        bottom: 0
-                    }, 1000);
-                        $("#resulterr").html("X-USER winned!!!");
+                        xwin();
                     } else if ($("#C" + count).attr("class") == "gameCell x-selected" && $("#C" + ccount).attr("class") == "gameCell x-selected" && $("#C" + cccount).attr("class") == "gameCell x-selected") {
-                        $("#resulter").animate({
-                        bottom: 0
-                    }, 1000);
-                        $("#resulterr").html("X-USER winned!!!");
+                        xwin();
                     } else if ($("#A" + count).attr("class") == "gameCell x-selected" && $("#B" + ccount).attr("class") == "gameCell x-selected" && $("#C" + cccount).attr("class") == "gameCell x-selected") {
-                        $("#resulter").animate({
-                        bottom: 0
-                    }, 1000);
-                        $("#resulterr").html("X-USER winned!!!");
+                        xwin();
                     } else if ($("#A" + cccount).attr("class") == "gameCell x-selected" && $("#B" + ccount).attr("class") == "gameCell x-selected" && $("#C" + count).attr("class") == "gameCell x-selected") {
-                        $("#resulter").animate({
-                        bottom: 0
-                    }, 1000);
-                        $("#resulterr").html("X-USER winned!!!");
+                        xwin();
                     } else if ($("#A" + count).attr("class") == "gameCell o-selected" && $("#B" + count).attr("class") == "gameCell o-selected" && $("#C" + count).attr("class") == "gameCell o-selected") {
-                        $("#resulter").animate({
-                        bottom: 0
-                    }, 1000);
-                        $("#resulterr").html("0-USER winned!!!");
+                        owin();
                     } else if ($("#A" + count).attr("class") == "gameCell o-selected" && $("#A" + ccount).attr("class") == "gameCell o-selected" && $("#A" + cccount).attr("class") == "gameCell o-selected") {
-                        $("#resulter").animate({
-                        bottom: 0
-                    }, 1000);
-                        $("#resulterr").html("0-USER winned!!!");
+                        owin();
                     } else if ($("#A" + ccount).attr("class") == "gameCell o-selected" && $("#B" + ccount).attr("class") == "gameCell o-selected" && $("#C" + ccount).attr("class") == "gameCell o-selected") {
-                        $("#resulter").animate({
-                        bottom: 0
-                    }, 1000);
-                        $("#resulterr").html("0-USER winned!!!");
+                        owin();
                     } else if ($("#B" + count).attr("class") == "gameCell o-selected" && $("#B" + ccount).attr("class") == "gameCell o-selected" && $("#B" + cccount).attr("class") == "gameCell o-selected") {
-                        $("#resulter").animate({
-                        bottom: 0
-                    }, 1000);
-                        $("#resulterr").html("0-USER winned!!!");
+                        owin();
                     } else if ($("#A" + cccount).attr("class") == "gameCell o-selected" && $("#B" + cccount).attr("class") == "gameCell o-selected" && $("#C" + cccount).attr("class") == "gameCell o-selected") {
-                        $("#resulter").animate({
-                        bottom: 0
-                    }, 1000);
-                        $("#resulterr").html("0-USER winned!!!");
+                        owin();
                     } else if ($("#C" + count).attr("class") == "gameCell o-selected" && $("#C" + ccount).attr("class") == "gameCell o-selected" && $("#C" + cccount).attr("class") == "gameCell o-selected") {
-                        $("#resulter").animate({
-                        bottom: 0
-                    }, 1000);
-                        $("#resulterr").html("0-USER winned!!!");
+                        owin();
                     } else if ($("#A" + count).attr("class") == "gameCell o-selected" && $("#B" + ccount).attr("class") == "gameCell o-selected" && $("#C" + cccount).attr("class") == "gameCell o-selected") {
-                        $("#resulter").animate({
-                        bottom: 0
-                    }, 1000);
-                        $("#resulterr").html("0-USER winned!!!");
+                        owin();
                     } else if ($("#A" + cccount).attr("class") == "gameCell o-selected" && $("#B" + ccount).attr("class") == "gameCell o-selected" && $("#C" + count).attr("class") == "gameCell o-selected") {
-                        $("#resulter").animate({
-                        bottom: 0
-                    }, 1000);
-                        $("#resulterr").html("0-USER winned!!!");
+                        owin();
                     } else if (counter == 9) {
-                        $("#resulter").animate({
-                        bottom: 0
-                    }, 1000);
-                        $("#resulterr").html("Nobody winned");
+                        nwin();
                     }
                 }
             });
@@ -197,11 +176,11 @@
         });
     </script>
     <script>
-        $("#clearCells").click(function() {
+        $("#clearCells").click(function reset() {
             $(".gameCell").removeClass("x-selected");
             $(".gameCell").removeClass("o-selected");
             $(".gameCell").removeAttr("style");
-            $("#consolePrint").html("Starting the match...");
+            $("#consolePrint").html("Starting the game...");
             counter = 0;
             user = "";
             playerIndex = Math.floor((Math.random() * 2));
